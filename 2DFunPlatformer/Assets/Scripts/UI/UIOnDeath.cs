@@ -1,18 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public abstract class UIOnDeath : UIManager
+public class UIOnDeath : MonoBehaviour
 {
-    public override void Start()
+    [SerializeField] private UIManager manager;
+    private void Start()
     {
         Debug.Log("Starting");
         GameEvents.instance.playerDied += ShowDeathScreen;
-        deathScreen.SetActive(false);
+        manager.deathScreen.SetActive(false);
     }
 
     private void ShowDeathScreen()
     {
-        deathScreen.SetActive(true);
+        manager.deathScreen.SetActive(true);
+        manager.finalTimeTxt.text = ($"Total Time: {Mathf.RoundToInt(manager.gameTime)}");
+    }
+
+    public void RestartLevel()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
     }
 }

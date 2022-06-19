@@ -7,14 +7,15 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] protected GameObject deathScreen;
+    public GameObject deathScreen;
     [SerializeField] protected TextMeshProUGUI gameTimeTxt;
+    public Text finalTimeTxt;
 
 
     [Header("Values that change")]
-    private float gameTime;
+    [HideInInspector] public float gameTime;
     // Start is called before the first frame update
-    public virtual void Start()
+    protected virtual void Start()
     {
         gameTime = 0;
     }

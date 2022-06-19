@@ -36,7 +36,7 @@ public class Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && amountOfDashes > 0)
         {
             amountOfDashes--;
-            GameEvents.instance.DashCountChanged(amountOfDashes);
+            //GameEvents.instance.DashCountChanged(amountOfDashes);
             canDash = true;
             dashDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - rb.transform.position;
             dashDirection.Normalize();
