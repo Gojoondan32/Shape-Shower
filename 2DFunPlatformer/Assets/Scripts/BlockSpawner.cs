@@ -16,15 +16,14 @@ public class BlockSpawner : MonoBehaviour
 
     [SerializeField] private Transform point1;
     [SerializeField] private Transform point2;
-    [SerializeField] private float countdown = 5f;
+
     [SerializeField] private GameObject[] block;
-    [SerializeField] private MasterTimer timerClass;
-    private int startingBlockAmount = 5;
+
     private Vector3 previousPos;
 
     [Header("Instances")]
     private GlobalTimer timer;
-    private Difficulty difficultyLevel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,21 +33,6 @@ public class BlockSpawner : MonoBehaviour
         timer = new GlobalTimer(1f);
         StartCoroutine(timer.ScaledTimer());
         timer.timerCompleted += SpawnNewBlock;
-        
-        CalculateDifficulty();
-    }
-
-
-    private int CalculateDifficulty()
-    {
-        //Use the current difficult level to choose which block to spawn
-
-        return 0;
-    }
-
-    private int ReturnBlockSize()
-    {
-        return 0;
     }
 
     private void SpawnNewBlock()

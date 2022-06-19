@@ -6,18 +6,13 @@ public class Movement : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Transform groundCheck;
-    Transform parent;
 
     [Header("Dash Variables")]
     [SerializeField] private float speed = 5f;
     [SerializeField] private float dashSpeed = 10f;
     [SerializeField] private float dashDistance = 3f;
-    [SerializeField] private float jumpForce = 5f;
     [SerializeField] private int amountOfDashes = 2;
     [SerializeField] private float currentDashDistance;
-
-    private float X;
 
     private bool canDash;
     Vector3 dashDirection;
@@ -52,7 +47,7 @@ public class Movement : MonoBehaviour
 
         Vector3 move = Camera.main.ScreenToWorldPoint(Input.mousePosition) - rb.transform.position;
         rb.velocity = move * speed;
-        //Clamp a vector magnitude
+        //Clamp the vector magnitude to set a max speed 
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, 10);
         Debug.Log("Moving");
         //Rotation
