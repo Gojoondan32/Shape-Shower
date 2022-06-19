@@ -24,7 +24,10 @@ public class GameEvents : MonoBehaviour
     public event Action<Vector3> blockSpawning;
     public event Action playerDied;
 
-
+    #region WinCondition
+    public event Action<int> checkWinCondition;
+    public void CheckWinCondtion(int currentGoals) => checkWinCondition.Invoke(currentGoals);
+    #endregion
 
     public void BlockSpawning(Vector3 position) => blockSpawning.Invoke(position);
 
