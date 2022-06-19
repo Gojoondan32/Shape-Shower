@@ -1,3 +1,7 @@
 Clean up code
 	Remove grid folder (from previous project) : Completed - True
 	Organise UI scripts : Completed - False
+
+Change idea slightly 
+	Instead of falling shapes the game is set in space
+	The player has to dodge asteroids
