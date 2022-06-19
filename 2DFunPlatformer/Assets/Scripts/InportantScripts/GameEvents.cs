@@ -14,15 +14,17 @@ public class GameEvents : MonoBehaviour
     }
     #endregion
 
+    #region UI Events
     public event Action<int> dashCountChanged;
+    public void DashCountChanged(int count) => dashCountChanged.Invoke(count);
+    #endregion
+
+
 
     public event Action<Vector3> blockSpawning;
     public event Action playerDied;
 
-    public void DashCountChanged(int count)
-    {
-        dashCountChanged.Invoke(count);
-    }
+
 
     public void BlockSpawning(Vector3 position) => blockSpawning.Invoke(position);
 

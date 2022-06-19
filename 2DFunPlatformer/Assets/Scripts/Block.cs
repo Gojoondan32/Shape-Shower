@@ -32,7 +32,6 @@ public class Block : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             GameEvents.instance.PlayerDied();
-            Time.timeScale = 0;
             //Player has lost
             //Destroy(collision.gameObject);
         }

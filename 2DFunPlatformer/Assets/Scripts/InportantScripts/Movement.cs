@@ -25,8 +25,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameEvents.instance.DashCountChanged(amountOfDashes);
-        Time.timeScale = 1;
+        //GameEvents.instance.DashCountChanged(amountOfDashes);
     }
 
     // Update is called once per frame
