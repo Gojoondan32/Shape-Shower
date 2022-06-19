@@ -44,27 +44,12 @@ public class Movement : MonoBehaviour
             currentDashDistance = 0;
         }
 
-        
-        //Glide 
-
-
-        //Jump
-        if (Input.GetKeyDown(KeyCode.Space) && CheckGround())
-        {
-            Debug.Log("Jumping");
-            rb.velocity = Vector2.up * jumpForce;
-        }
-
         //Add manual gravity
         AddGravity();
     }
 
     private void FixedUpdate()
     {
-        //Movement
-        //float x = Input.GetAxisRaw("Horizontal");
-        //X = x;
-        //rb.velocity = new Vector2(x * speed, rb.velocity.y);
 
         Vector3 move = Camera.main.ScreenToWorldPoint(Input.mousePosition) - rb.transform.position;
         rb.velocity = move * speed;
@@ -93,55 +78,12 @@ public class Movement : MonoBehaviour
         }
     }
 
-    //The CheckGround method is only called if the player presses the spacebar
-    private bool CheckGround()
-    {
-        return Physics2D.OverlapCircle(groundCheck.position, 1f, LayerMask.GetMask("Ground"));
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("Running");
-        //Collides with dash wall
-        if(collision.gameObject.layer == 8)
-        {
-            Debug.Log(X);
-            //rb.velocity = new Vector2(1, rb.velocity.y);
-            //amountOfDashes++;
-            //GameEvents.instance.DashCountChanged(amountOfDashes);
-        }
-    }
 
     private void AddGravity()
     {
         rb.velocity = Vector2.down * 1f;
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if(collision.gameObject.layer == 7)
-        {
-            //Player is colliding with a wall
-            Debug.Log("Colliding with a wall");
-            rb.gravityScale = 0.1f;
-        }
-    }
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if(collision.gameObject.layer == 7)
-        {
-            rb.gravityScale = 1;
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.layer == 9)
-        {
-            amountOfDashes++;
-            GameEvents.instance.DashCountChanged(amountOfDashes);
-        }
-    }
 
 }
